@@ -23,9 +23,9 @@
     <td><%= question.duplicate_id %></td>
     <td><%= question.mark_as_duplicated_by %></td>
     <td><%= question.status %></td>
-    <td><%= link_to 'Show', admin_question %></td>
+    <td><%= link_to 'Show', admin_question_path(question) %></td>
     <td><%= link_to 'Edit', edit_admin_question_path(question) %></td>
-    <td><%= link_to 'Destroy', admin_question, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', admin_question_path(question), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

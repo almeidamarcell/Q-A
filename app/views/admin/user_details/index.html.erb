@@ -21,13 +21,13 @@
     <td><%= user_detail.information %></td>
     <td><%= user_detail.is_male %></td>
     <td><%= user_detail.year_of_birth %></td>
-    <td><%= link_to 'Show', user_detail %></td>
-    <td><%= link_to 'Edit', edit_user_detail_path(user_detail) %></td>
-    <td><%= link_to 'Destroy', user_detail, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', admin_user_detail_path(user_detail) %></td>
+    <td><%= link_to 'Edit', edit_admin_user_detail_path(user_detail) %></td>
+    <td><%= link_to 'Destroy', admin_user_detail_path(user_detail), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New User detail', new_user_detail_path %>
+<%= link_to 'New User detail', new_admin_user_detail_path %>
