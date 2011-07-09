@@ -1,0 +1,35 @@
+<h1>Listing questions</h1>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>View count</th>
+    <th>Duplicate</th>
+    <th>Mark as duplicated by</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @questions.each do |question| %>
+  <tr>
+    <td><%= question.user_id %></td>
+    <td><%= question.title %></td>
+    <td><%= question.description %></td>
+    <td><%= question.view_count %></td>
+    <td><%= question.duplicate_id %></td>
+    <td><%= question.mark_as_duplicated_by %></td>
+    <td><%= question.status %></td>
+    <td><%= link_to 'Show', admin_question %></td>
+    <td><%= link_to 'Edit', edit_admin_question_path(question) %></td>
+    <td><%= link_to 'Destroy', admin_question, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Question', new_admin_question_path %>

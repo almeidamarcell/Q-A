@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  web_site: MyString
+  location: MyString
+  information: MyString
+  is_male: false
+  year_of_birth: 1
+
+two:
+  user_id: 1
+  web_site: MyString
+  location: MyString
+  information: MyString
+  is_male: false
+  year_of_birth: 1

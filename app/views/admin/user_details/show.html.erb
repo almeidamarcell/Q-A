@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @user_detail.user_id %>
+</p>
+
+<p>
+  <b>Web site:</b>
+  <%= @user_detail.web_site %>
+</p>
+
+<p>
+  <b>Location:</b>
+  <%= @user_detail.location %>
+</p>
+
+<p>
+  <b>Information:</b>
+  <%= @user_detail.information %>
+</p>
+
+<p>
+  <b>Is male:</b>
+  <%= @user_detail.is_male %>
+</p>
+
+<p>
+  <b>Year of birth:</b>
+  <%= @user_detail.year_of_birth %>
+</p>
+
+
+<%= link_to 'Edit', edit_user_detail_path(@user_detail) %> |
+<%= link_to 'Back', user_details_path %>

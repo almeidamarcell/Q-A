@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  question_id: 1
+  user_id: 1
+  text: MyString
+  is_accepted: false
+  accepted_by: 1
+
+two:
+  question_id: 1
+  user_id: 1
+  text: MyString
+  is_accepted: false
+  accepted_by: 1

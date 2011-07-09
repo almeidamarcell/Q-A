@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  title: MyString
+  description: MyString
+  view_count: 1
+  duplicate_id: 1
+  mark_as_duplicated_by: 1
+  status: 1
+
+two:
+  user_id: 1
+  title: MyString
+  description: MyString
+  view_count: 1
+  duplicate_id: 1
+  mark_as_duplicated_by: 1
+  status: 1

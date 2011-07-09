@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>User:</b>
+  <%= @question.user_id %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @question.title %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @question.description %>
+</p>
+
+<p>
+  <b>View count:</b>
+  <%= @question.view_count %>
+</p>
+
+<p>
+  <b>Duplicate:</b>
+  <%= @question.duplicate_id %>
+</p>
+
+<p>
+  <b>Mark as duplicated by:</b>
+  <%= @question.mark_as_duplicated_by %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @question.status %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_question_path(@question) %> |
+<%= link_to 'Back', admin_questions_path %>

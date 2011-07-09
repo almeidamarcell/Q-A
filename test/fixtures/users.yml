@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  id: 
+  name: MyString
+  lowered_name: MyString
+  open_identifier: MyString
+  password: MyString
+  reputation: 
+  is_banned: false
+  last_seen_on: 2011-07-02 02:01:35
+
+two:
+  id: 
+  name: MyString
+  lowered_name: MyString
+  open_identifier: MyString
+  password: MyString
+  reputation: 
+  is_banned: false
+  last_seen_on: 2011-07-02 02:01:35
