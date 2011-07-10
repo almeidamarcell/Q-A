@@ -3,7 +3,7 @@ class AdminController < ApplicationController
 
   def require_admin
     authenticate_or_request_with_http_basic do |username, password|
-      username == 'michal' && password == 'test'
+      username == Qa::Application.config.admin_user_name && password == Qa::Application.config.admin_password
     end
   end
 end

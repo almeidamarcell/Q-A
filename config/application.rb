@@ -38,5 +38,9 @@ module Qa
 
     # Enable the asset pipeline
     config.assets.enabled = true
+
+    #overwrite Your settings in production.rb
+    config.admin_user_name = 'test'
+    config.admin_password = 'test'
   end
 end
