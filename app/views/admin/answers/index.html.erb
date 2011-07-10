@@ -19,13 +19,13 @@
     <td><%= answer.text %></td>
     <td><%= answer.is_accepted %></td>
     <td><%= answer.accepted_by %></td>
-    <td><%= link_to 'Show', answer %></td>
-    <td><%= link_to 'Edit', edit_answer_path(answer) %></td>
-    <td><%= link_to 'Destroy', answer, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Show', admin_answer_path(answer) %></td>
+    <td><%= link_to 'Edit', edit_admin_answer_path(answer) %></td>
+    <td><%= link_to 'Destroy', admin_answer_path(answer), confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Answer', new_answer_path %>
+<%= link_to 'New Answer', new_admin_answer_path %>
