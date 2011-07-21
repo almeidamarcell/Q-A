@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="keywords" content="<%= @page.stats.generated_in %>" />
+    <meta name="description" content="<%= @page.meta.site_description %>" />
+    <title><%= @page.title %></title>
+    <%= stylesheet_link_tag "styles.min" %>
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon" />
+    <link href="/feed" title="Feed of recent questions" type="application/atom+xml" rel="alternate"/>
+    <!--[if lte IE 7]>
+    <%= stylesheet_link_tag "ie.min" %>
+    <![endif]-->
+    <link href="/opensearch.xml" title="Cyprus QA" type="application/opensearchdescription+xml" rel="search">
+  </head>
+  <body>
+    <div class="container">
+      <% if flash[:message].nil? %>
+        <div id="message" class="notification-bar">
+          <div class="text"><%= flash[:message] %></div>
+        </div>
+      <% end %>
+      <div class="header">
+        <div class='user-info <%= @current_user.nil? ? "login" : "logout" %>'>
+          <%= render "shared/login" %>
+        </div>
+        <div class="logo">
+          <a href="<%= @page.app.url %>" title="Go to homepage">
+            <img alt="<%= @page.app.name %> logo" src="/assets/logo.jpg" title="<%= @page.app.name %> logo" />
+          </a>
+        </div>
+      </div>
+      <div id="navigation">
+        <%= link_to "Ask Question", { :action => 'ask', :controller => 'questions' }, @class => 'ask-question' %>
+        <span class="separator">|</span>
+        <%= link_to "Questions", { :action => 'all', :controller => 'questions', :order_by => 'newest' } %>
+        <span class="separator">|</span>
+        <%= link_to "Users", { :action => 'all', :controller => 'users', :page => 1, :order_by => 'reputation' } %>
+        <span class="separator">|</span>
+        <%= link_to "Tags", { :action => "all", :controller => "tags", :page => 1 } %>
+        <span class="separator">|</span>
+        <%= link_to 'About', { :action => 'about', :controller =>  'home' } %>
+        <span class="separator">|</span>
+        <%= link_to "Faq", { :action => "faq", :controller => "home" } %>
+      </div>
+      <div class="clear"></div>
+      <div id="banner" class="container">
+        <div class="upper-slogan">Community Questions</div>
+        <div class="lower-slogan">Community Answers</div>
+      </div>
+      <div class="header-bar">
+        <h2><%= @page.h2 %></h2>
+      </div>
+      <div class="search-bar">
+        <%= form_tag({ :action => "search", :controller => "questions" }) do %>
+          <%= text_field 'query', :id => 'search-text' %>
+        <% end %>
+      </div>
+      <div class="clear"></div>
+      <%= yield %>
+      <div class="clear"></div>
+      <div class="footer container rounded clearfix">
+        <div class="links">
+          <%= link_to "About", { :action => "about", :controller => "home" } %>
+          <%= link_to "FAQ", { :action => "faq", :controller => "home" } %>
+          <%= link_to "Privacy Policy", { :action => "privacypolicy", :controller => "home" } %>
+          <%= link_to "Disclaimer", { :action => "disclaimer", :controller => "home" } %>
+          <a href="<%= @page.social.twitter_link %>" >Follow Us on Twitter</a>
+          <a href="mailto:<%= @page.social.email %>">Contact Us</a>
+        </div>
+        <div class="copyright">
+          <%= @page.app.name %> &copy; Copyright 2009
+        </div>
+      </div>
+      <% if !@current_user.nil? && @current_user.admin? %>
+        <div class="footer container rounded clearfix">
+          <span class="message">Web site generated in <%= @page.stats.generated_in %> seconds</span>
+        </div>
+      <% end %>
+    </div>
+    <p>
+      <a id="feedback-tab" onclick="javascript:$('#feedback-modal').dialog('open');return false;" href="<%= url_for({ :action => 'report', :controller => 'feedback' }) %>"></a>
+    </p>
+    <div id="feedback-modal" class="dialog container clearfix" style="display:none">
+      <%= render 'shared/feedback' %>
+    </div>
+    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js", "jquery.ui.core.min", "jquery.ui.dialog.min", "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js" , "utils", "jquery.watermark" %>
+
+    <script type="text/javascript">
+      $("#search-text").watermark({ watermarkedText: "Search..." });
+      var isAuth = <%= @current_user.nil? ? 'false' : 'true' %>;
+      </script>
+      <script type="text/javascript">
+        var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+        document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+          try {
+            var pageTracker = _gat._getTracker(<%= @page.google.ga %>);
+            pageTracker._trackPageview();
+          } catch (err) { }
+</script>
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function () {
+    FB.init({ appId: <%= @page.social.fb.app_id %>, status: true, cookie: true, xfbml: true
+    });
+    FB.Event.subscribe('auth.sessionChange', function (response) {
+      if (response.session) {
+        window.location = "<%= url_for({ :action => 'login_with_facebook', :controller => 'account', :returnUrl => @page.url }) %>";
+        } else {
+        window.location = '<%= url_for({ :action => "logout", :account => "account", :returnUrl => @page.url }) %>';
+      }
+    });
+    FB.Event.subscribe('xfbml.render', function (response) {
+      $('.login-with-facebook').append('<span>or</span>');
+    });
+  };
+  (function () {
+    var e = document.createElement('script');
+    e.type = 'text/javascript';
+    e.src = document.location.protocol +
+    '//connect.facebook.net/en_US/all.js';
+    e.async = true;
+    document.getElementById('fb-root').appendChild(e);
+  } ());
+  function logoutFacebook(obj) {
+    FB.logout(function (response) {
+      document.location = obj.href;
+    });
+    return false;
+  }
+</script>
+    <%= yield :scripts %>
+    </body>
+  </html>

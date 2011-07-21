@@ -1,0 +1,22 @@
+<% form_tag({ :action => 'report', :controller => 'feedback' }, :id => 'feedback-form') do %>
+  <div id="feedback-container">
+    <div class="clear"></div>
+    <label for="feedback-feedback">Your suggestion / Bug report</label>
+    <div class="input">
+      <%= text_area_tag 'feedback', :id => 'feedback-feedback', :name => 'feedback', :rows => 3, :cols => 40 %>
+    </div>
+    <div class="clear"></div>
+    <label for="feedback-email">Expecting answer? Leave Your Email:</label>
+    <div class="clear"></div>
+    <div class="input">
+      <%= text_field 'name', { :id => 'feedback-email' }  %>
+    </div>
+    <div class="buttons">
+      <% @url_feedback = url_for({ :action => "report", :controller => "feedback" }) %>
+      <%= submit_tag 'Send', :id => 'feedback-send', :class => "button background-button-small", :onclick => "javascript:sendFeedback(this, '#{@url_feedback}')" %>
+    </div>
+  </div>
+  <div id="feedback-message">
+
+  </div>
+<% end %>

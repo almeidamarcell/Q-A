@@ -20,8 +20,10 @@ gem 'jquery-rails'
 
 gem 'recaptcha', :require => 'recaptcha/rails'
 
+gem 'kaminari'
+
 #gem 'devise'
-#gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+#gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'
 
 # gem 'unicorn'
 

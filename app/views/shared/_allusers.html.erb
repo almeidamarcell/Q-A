@@ -1,0 +1,32 @@
+<%
+    rows = 7;
+%>
+<% if(@users.count == 0) %>
+  <span class="no-results">Sorry, no users found for this search...</span>
+<% else %>
+<div id="user-summary-list" class="clearfix">
+  <div class="user-summary-list">
+  <% @users.take(rows).each do |user| %>
+    <%= render :partial => "shared/user_summary", :locals => { :user => user } %>
+  <% end %>
+  </div>
+  <div class="user-summary-list">
+  <% @users.drop(rows).take(rows).each do |user| %>
+    <%= render :partial => "shared/user_summary", :locals => { :user => user } %>
+  <% end %>
+  </div>
+  <div class="user-summary-list">
+  <% @users.drop(rows*2).take(rows).each do |user| %>
+    <%= render :partial => "shared/user_summary", :locals => { :user => user } %>
+  <% end %>
+  </div>
+  <div class="user-summary-list">
+  <% @users.drop(rows*3).take(rows).each do |user| %>
+    <%= render :partial => "shared/user_summary", :locals => { :user => user } %>
+  <% end %>
+  </div>
+</div>
+<% end %>
+<div class="user-summary-pager right">
+  <%= paginate @users %>
+</div>

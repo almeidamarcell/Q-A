@@ -1,0 +1,38 @@
+<div class="user-summary-panel">
+  <div class="user-search left">
+    <label for="user-search">Type to filter results: </label><input id="user-search" type="text" />
+  </div>
+  <div class="sort-options left">
+    order by:
+    <%= link_to "newest", { :action => "all", :controller => "users", :order => 'newest' }, { :class => @order == "newest" ? "selected" : "" } %>
+    |
+    <%= link_to "reputation", { :action => "all", :controller => "users", :order => 'by_reputation' }, { :class => @order == "by_reputation" ? "selected" : ""  } %>
+</div>
+<div class="clear"></div>
+<div id="user-summary-main" class="user-summary-main">
+  <%= render "shared/allusers" %>
+</div>
+<% content_for :scripts do %>
+    <%= javascript_include_tag "jquery.typewatch.min.js" %>
+    <script type="text/javascript">
+        var options = {
+            callback: function() { updateUserList(1); },
+            wait: 750,          // milliseconds
+            highlight: true,    // highlight text on focus
+            enterkey: true,     // allow "Enter" to submit data on INPUTs
+            captureLength: -1
+        }
+        $("#user-search").typeWatch(options);
+
+        function updateUserList(pageNumber) {
+            $.ajax({
+                url: '<%= url_for({ :action => "search", :controller => "users", :order => @order }) %>',
+                data: { search: $('#user-search').val(), page: pageNumber },
+                success: function(htmlPartial) {
+                    $('#user-summary-main').html(htmlPartial);
+                }
+            });
+        }
+    </script>
+
+<% end %>

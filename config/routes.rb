@@ -1,4 +1,10 @@
 Qa::Application.routes.draw do
+  get "users/all"
+
+  get "test/all"
+
+  get "test/recent"
+
   namespace :admin do
     resources :roles
     resources :answers
@@ -6,10 +12,11 @@ Qa::Application.routes.draw do
     resources :user_details
     resources :users
   end
+  root :to => "questions#all"
 
-  match 'account(/:action)' => 'account'
+  match "/questions/all" => "questions#all"
+  match ':controller(/:action(/:id(.:format)))'
 
-  # The priority is based upon order of creation:
   # first created -> highest priority.
 
   # Sample of regular route:

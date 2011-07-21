@@ -1,0 +1,9 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>Cyprus QA</ShortName>
+  <Description>
+    Search cyprusqa.com for answers to your questions concering Cyprus
+  </Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image width="16" height="16" type="image/x-icon">http://cyprusqa.com/content/images/favicon.ico</Image>
+  <Url type="text/html" method="get" template="http://cyprusqa.com/questions/search?query={searchTerms}"/>
+</OpenSearchDescription>

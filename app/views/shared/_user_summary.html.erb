@@ -1,0 +1,11 @@
+<div class="user-summary">
+  <%= raw gravatar_url user.email, :class => 'img', :default_image => 'mm' %>
+  <p class="user-and-rep">
+    <%= link_to user.display_name[0..15], { :action => 'profile', :controller => 'users', :id => user.id } %>
+    (<%= user.reputation %>)
+    <%= raw stars (user.reputation/300).round %>
+  </p>
+  <p class="time">
+    joined <%= time_difference(user.created_at) %>
+  </p>
+</div>
