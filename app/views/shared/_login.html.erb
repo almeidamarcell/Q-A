@@ -1,1 +1,15 @@
-empty so far
+<%  if !@current_user.nil? %>
+  Welcome <b>
+    <%= link_to @current_user.display_name[0..12], { :action => "details", :controller => "users", :id => @current_user.id, :name => @current_user.display_name }, { :class => "user-link" } %>
+  </b>
+  <%= stars(@currenct_user.reputation/300) %>
+  <%= link_to "Logout", { :action => "logout", :controller => "account" }, { :class => "logout-link", :onclick => @current_user.from_facebook? ? "javascript:logoutFacebook(this)" : "javascript:return true;" } %>
+<% else %>
+  <div class="login-standard">
+    <%= link_to "Login", { :action => "login", :controller => "account" } %>
+    <%= link_to "Register", { :action => "register", :controller => "account" }, { :class => "register-link" } %>
+  </div>
+  <div class="login-with-facebook">
+    <fb:login-button ></fb:login-button>
+  </div>
+<% end %>
