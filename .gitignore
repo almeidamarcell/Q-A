@@ -6,5 +6,6 @@ tmp/
 /config/database.yml
 .idea
 *.swp
+*.swo
 *~
 /public/Upload/
