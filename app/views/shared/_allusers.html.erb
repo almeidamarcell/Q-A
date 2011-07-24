@@ -28,5 +28,5 @@
 </div>
 <% end %>
 <div class="user-summary-pager right">
-  <%= paginate @users %>
+  <%= paginate @users, :window => 2, :outer_window => 1 %>
 </div>
