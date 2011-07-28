@@ -17,10 +17,11 @@ gem 'coffee-script'
 gem 'uglifier'
 
 gem 'jquery-rails'
-
 gem 'recaptcha', :require => 'recaptcha/rails'
-
 gem 'kaminari'
+gem 'client_side_validations'
+gem 'omniauth'
+
 
 #gem 'devise'
 #gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch => 'rails-3.1'

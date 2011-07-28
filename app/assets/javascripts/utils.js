@@ -73,7 +73,7 @@ function onModalClose(){
 function sendFeedback(objClicked, url) {
     if ($("#feedback-form").valid()) {
         $("#feedback-send").val("Sending, please wait...").attr('disabled', 'disabled').addClass('disabled');
-        
+
         $.postJSON(url, { email: $('#feedback-email').val(), feedback: $('#feedback-feedback').val() }, function(result) {
             $('#feedback-container').hide();
             if (result.IsSuccess) {
@@ -83,13 +83,13 @@ function sendFeedback(objClicked, url) {
             }
 
         });
-    }        
+    }
 }
-$("#feedback-form").validate({
-    rules: { feedback: { required: true } },
-    messages: { feedback: { required: "Please provide feedback" } },
-    keyup: true
-});
+//$("#feedback-form").validate({
+//    rules: { feedback: { required: true } },
+//    messages: { feedback: { required: "Please provide feedback" } },
+//    keyup: true
+//});
 function showTip(url) {
     $.ajax({
         url: url,

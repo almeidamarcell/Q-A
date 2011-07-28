@@ -25,3 +25,8 @@ Qa::Application.configure do
   # Do not compress assets
   config.assets.compress = false
 end
+
+Qa::Application.config.middleware.use OmniAuth::Builder do
+  provider :facebook, '256976930981339', '27cb50bc69c63b8200dd6c8e779df0b0'
+  provider :twitter, 'XjfsKui9rPTgc5uu3UINg', 'RIOSgmcI01BEJNSDrWeSme0NVkMl2jhvb84imI1Pzo'
+end

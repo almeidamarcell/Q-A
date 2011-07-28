@@ -1,6 +1,10 @@
-class AccountController < ActionController::Base
-  def index
+class AccountController < ApplicationController
+  layout "public"
+
+  def registration
     @user = User.new
+
+    @page.h2 = 'Register'
   end
 
   def register
@@ -12,9 +16,9 @@ class AccountController < ActionController::Base
       if @user.save
         session['user_id'] = @user.id
         flash[:notice] = 'User was successfully created.'
-        format.html { redirect_to :action => 'index' }
+        format.html { redirect_to :root }
       else
-        format.html { render :action => 'index' }
+        format.html { render :action => 'registration' }
       end
     end
   end
@@ -28,6 +32,29 @@ class AccountController < ActionController::Base
     else
       @user.errors.add_to_base("Invalid username or password!")
     end
+  end
+
+  def generic
+    auth = request.env["omniauth.auth"]
+    open_identifier = auth['uid']
+    provider = request.env['provider']
+
+    user = User.where('open_identifier = ? AND provider = ?', open_identifier, provider)
+
+    user = User.new
+
+    if user.nil?
+      user = User.new
+    end
+
+    user.email = auth['user_info']['email']
+    user.display_name = auth['user_info']['name']
+    user.open_identifier = open_identifier
+    #user.provider = provider
+
+    user.save :validate => false
+
+    raise request.env["omniauth.auth"].to_yaml
   end
 
 end

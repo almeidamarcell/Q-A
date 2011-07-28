@@ -84,7 +84,7 @@
     <div id="feedback-modal" class="dialog container clearfix" style="display:none">
       <%= render 'shared/feedback' %>
     </div>
-    <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js", "jquery.ui.core.min", "jquery.ui.dialog.min", "http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js" , "utils", "jquery.watermark" %>
+    <%= javascript_include_tag "application", "utils", "jquery.watermark" %>
 
     <script type="text/javascript">
       $("#search-text").watermark({ watermarkedText: "Search..." });

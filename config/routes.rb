@@ -1,9 +1,7 @@
 Qa::Application.routes.draw do
   get "users/all"
 
-  get "test/all"
-
-  get "test/recent"
+  get "/auth/:provider/callback" => 'account#generic'
 
   namespace :admin do
     resources :roles

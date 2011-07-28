@@ -10,6 +10,6 @@
     <%= link_to "Register", { :action => "register", :controller => "account" }, { :class => "register-link" } %>
   </div>
   <div class="login-with-facebook">
-    <fb:login-button ></fb:login-button>
+     <%= link_to 'login with facebook', '/auth/facebook'  %>
   </div>
 <% end %>

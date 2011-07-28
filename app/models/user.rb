@@ -2,7 +2,6 @@ require 'security/md5_authenticator'
 
 class User < ActiveRecord::Base
   attr_accessor :password
-
   validates :name, :presence => true, :uniqueness => true
   validates :email, :uniqueness => { :if => 'email.present?' }
   validates :password, :presence => true, :confirmation => true
